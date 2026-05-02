@@ -1,7 +1,9 @@
 package com.example.travel.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -14,16 +16,12 @@ public class Spot implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     private Long categoryId;
 
     private String name;
-
-    private String coverUrl;
-
-    private String introduction;
 
     private String address;
 
@@ -31,13 +29,27 @@ public class Spot implements Serializable {
 
     private BigDecimal latitude;
 
-    private BigDecimal price;
+    private String coverUrl;
 
-    private BigDecimal score;
+    private String images;
+
+    private String brief;
+
+    private String detail;
+
+    private String openTime;
+
+    private BigDecimal ticketPrice;
+
+    private Integer heatScore;
 
     private Integer status;
 
     private LocalDateTime createTime;
 
     private LocalDateTime updateTime;
+
+    @TableLogic
+    @TableField("is_deleted")
+    private Integer isDeleted;
 }
