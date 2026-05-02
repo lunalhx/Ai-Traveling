@@ -20,7 +20,19 @@
 - LBS 推荐与打卡：景点经纬度存 MySQL 并同步 Redis GEO，用户上报位置后查询附近景点，并判断是否进入打卡范围。
 - 限量周边抢购：Redis + Lua 进行库存校验、一人一单、预扣库存，RabbitMQ 异步下单削峰，MySQL 做最终落库和兜底。
 
-## 分层结构
+## 工程结构
+
+```text
+AI_traveling
+├── src/              # 后端 Spring Boot 服务
+├── frontend/         # 前端服务，独立于后端源码目录
+├── pom.xml
+└── README.md
+```
+
+前端服务统一放在根目录 `frontend/` 下，与后端 `src/` 同级管理，不放入 `src/main/resources`、`src/main/java` 或任何后端服务包中。
+
+## 后端分层结构
 
 ```text
 com.example.travel
@@ -36,6 +48,26 @@ com.example.travel
 ├── vo
 ├── utils
 └── interceptor
+```
+
+## 前端目录约定
+
+```text
+frontend
+├── public
+└── src
+    ├── api          # 后端接口封装，对齐 controller 暴露的接口
+    ├── assets       # 图片、字体等静态资源
+    ├── components   # 通用组件
+    ├── config       # 前端运行配置
+    ├── layouts      # 页面布局
+    ├── pages        # 页面视图
+    ├── router       # 前端路由
+    ├── services     # 前端业务编排逻辑
+    ├── stores       # 状态管理
+    ├── styles       # 全局样式
+    ├── types        # TypeScript 类型，对齐后端 dto/vo
+    └── utils        # 前端工具函数
 ```
 
 ## 数据表规划

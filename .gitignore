@@ -37,5 +37,13 @@ build/
 ### VS Code ###
 .vscode/
 
+### Frontend / Node ###
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+
 ### Mac OS ###
 .DS_Store
