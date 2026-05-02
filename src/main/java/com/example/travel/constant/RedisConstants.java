@@ -8,6 +8,14 @@ public final class RedisConstants {
     public static final String LOGIN_USER_KEY = "login:token:";
     public static final Long LOGIN_USER_TTL = 30L;
 
+    public static final String CACHE_SPOT_DETAIL_KEY = "cache:spot:detail:";
+    public static final String LOCK_SPOT_DETAIL_KEY = "lock:spot:detail:";
+    public static final Long CACHE_SPOT_DETAIL_TTL = 30L;
+    public static final Long CACHE_SPOT_DETAIL_RANDOM_TTL_MIN = 1L;
+    public static final Long CACHE_SPOT_DETAIL_RANDOM_TTL_MAX = 10L;
+    public static final Long CACHE_SPOT_DETAIL_NULL_TTL = 2L;
+    public static final Long LOCK_SPOT_DETAIL_TTL = 10L;
+
     private RedisConstants() {
     }
 }
