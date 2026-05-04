@@ -1,0 +1,55 @@
+/* 全局基础样式重置与设定 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+  background-color: #f0f2f5; /* 简洁的浅灰背景 */
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 占位页面的统一容器样式 */
+.page-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.05);
+  min-height: calc(100vh - 120px); /* 撑满大部分主内容区域 */
+  box-sizing: border-box;
+}
+
+.page-container h2 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: #303133;
+  border-bottom: 1px solid #ebeef5;
+  padding-bottom: 12px;
+  font-size: 22px;
+}
+
+.page-container p {
+  color: #606266;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.page-container ul {
+  padding-left: 20px;
+  color: #909399;
+  font-family: monospace;
+  background-color: #fafafa;
+  padding: 16px 16px 16px 32px;
+  border-radius: 4px;
+  margin-top: 16px;
+}
+
+.page-container li {
+  margin-bottom: 8px;
+}
