@@ -27,6 +27,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
                         "/user/code",
                         "/user/login",
                         "/spot/**",
+                        "/goods/**",
+                        "/seckill/activity/**",
                         "/test/**",
                         "/swagger-ui/**",
                         "/swagger-resources/**",

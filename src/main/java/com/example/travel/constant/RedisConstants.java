@@ -26,6 +26,10 @@ public final class RedisConstants {
     public static final String CHECKIN_SPOT_KEY = "checkin:spot:";
     public static final String CHECKIN_DATE_PATTERN = "yyyy-MM-dd";
 
+    public static final String SECKILL_STOCK_KEY = "seckill:stock:";
+    public static final String SECKILL_ORDER_KEY = "seckill:order:";
+    public static final String SECKILL_RESULT_KEY = "seckill:result:";
+
     private RedisConstants() {
     }
 }
