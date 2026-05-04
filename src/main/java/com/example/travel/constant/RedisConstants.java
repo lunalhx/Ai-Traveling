@@ -16,6 +16,16 @@ public final class RedisConstants {
     public static final Long CACHE_SPOT_DETAIL_NULL_TTL = 2L;
     public static final Long LOCK_SPOT_DETAIL_TTL = 10L;
 
+    public static final String GEO_SPOT_KEY = "geo:spot";
+    public static final Integer NEARBY_SPOT_DEFAULT_RADIUS = 3000;
+    public static final Integer NEARBY_SPOT_MAX_RADIUS = 50000;
+    public static final Integer NEARBY_SPOT_DEFAULT_LIMIT = 10;
+    public static final Integer NEARBY_SPOT_MAX_LIMIT = 50;
+
+    public static final String CHECKIN_USER_KEY = "checkin:user:";
+    public static final String CHECKIN_SPOT_KEY = "checkin:spot:";
+    public static final String CHECKIN_DATE_PATTERN = "yyyy-MM-dd";
+
     private RedisConstants() {
     }
 }

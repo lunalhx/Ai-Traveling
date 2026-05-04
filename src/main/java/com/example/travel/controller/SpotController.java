@@ -1,10 +1,12 @@
 package com.example.travel.controller;
 
 import com.example.travel.common.Result;
+import com.example.travel.dto.NearbySpotQueryDTO;
 import com.example.travel.dto.SpotQueryDTO;
 import com.example.travel.dto.SpotSaveDTO;
 import com.example.travel.service.SpotCategoryService;
 import com.example.travel.service.SpotService;
+import com.example.travel.vo.NearbySpotVO;
 import com.example.travel.vo.PageResult;
 import com.example.travel.vo.SpotCategoryVO;
 import com.example.travel.vo.SpotDetailVO;
@@ -43,6 +45,11 @@ public class SpotController {
         return Result.success(spotService.listHotSpots(limit));
     }
 
+    @GetMapping("/spot/nearby")
+    public Result<List<NearbySpotVO>> listNearbySpots(NearbySpotQueryDTO queryDTO) {
+        return Result.success(spotService.queryNearbySpots(queryDTO));
+    }
+
     @GetMapping("/spot/{id}")
     public Result<SpotDetailVO> getSpotDetail(@PathVariable Long id) {
         return Result.success(spotService.getSpotDetail(id));
@@ -57,5 +64,10 @@ public class SpotController {
     public Result<Void> updateSpot(@PathVariable Long id, @RequestBody @Valid SpotSaveDTO saveDTO) {
         spotService.updateSpot(id, saveDTO);
         return Result.success();
+    }
+
+    @PostMapping("/admin/spot/geo/load")
+    public Result<Long> loadSpotGeoData() {
+        return Result.success(spotService.loadSpotGeoData());
     }
 }
