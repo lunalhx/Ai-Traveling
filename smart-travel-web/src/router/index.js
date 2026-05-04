@@ -27,26 +27,29 @@ const router = createRouter({
   routes
 })
 
+// 不需要登录即可访问的路由白名单
+const whiteList = ['/login']
+
 // 全局路由守卫
 router.beforeEach((to, from, next) => {
+  // 通过封装好的工具函数，从 localStorage 校验 token 是否存在
   const hasToken = isLoggedIn()
 
-  if (to.path === '/login') {
-    // 如果已经登录，还试图访问登录页，强制跳回首页
-    if (hasToken) {
+  if (hasToken) {
+    if (to.path === '/login') {
+      // 已经有 token，依然试图访问登录页时，重定向到首页（避免死循环）
       next({ path: '/dashboard' })
     } else {
-      // 未登录访问登录页，正常放行
+      // 有 token 且访问业务页面，正常放行
       next()
     }
   } else {
-    // 访问其他页面
-    if (!hasToken) {
-      // 没有登录（没有 token），强制拦截到登录页
-      next({ path: '/login' })
-    } else {
-      // 已经登录，正常放行
+    if (whiteList.includes(to.path)) {
+      // 没有 token，但试图访问的页面在白名单内（如 /login），正常放行
       next()
+    } else {
+      // 没有 token 且试图访问业务页面，强制拦截并跳转到登录页
+      next({ path: '/login' })
     }
   }
 })

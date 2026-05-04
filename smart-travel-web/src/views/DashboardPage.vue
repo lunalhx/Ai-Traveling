@@ -43,7 +43,9 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { ElMessage } from 'element-plus'
 import { getCurrentUser } from '../api/user'
+import { removeToken } from '../utils/auth'
 
 const router = useRouter()
 const userInfo = ref(null)
@@ -70,8 +72,11 @@ const loadUserInfo = async () => {
     // 兼容取值，防止后端返回结构不一致
     userInfo.value = res.data || res || null
   } catch (err) {
-    // 静默处理。因为此时后端可能还没写好这个接口，不要让报错弹窗阻挡体验。
-    console.warn('获取用户信息失败，后端可能暂未实现该接口')
+    console.warn('获取用户信息失败', err)
+    // 校验失败：清除 token 并提示登录状态异常
+    removeToken()
+    ElMessage.error('登录状态异常或已失效，请重新登录')
+    router.push('/login')
   }
 }
 
