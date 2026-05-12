@@ -10,7 +10,7 @@ export function checkin(data) {
 
 export function getTodayCheckinStatus(params) {
   return request({
-    url: '/checkin/status',
+    url: '/checkin/today',
     method: 'get',
     params
   })

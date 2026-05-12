@@ -61,6 +61,9 @@
               <h4 :title="spot.name">{{ spot.name }}</h4>
               <p>🔥 热度: {{ spot.heatScore || 0 }}</p>
               <p class="address" :title="spot.address">📍 {{ spot.address || '暂无地址' }}</p>
+              <div class="card-footer">
+                <el-button type="primary" size="small" @click.stop="goToDetail(spot.id)">查看详情</el-button>
+              </div>
             </div>
           </el-card>
         </el-col>
@@ -86,7 +89,7 @@
               <p class="heat">🔥 热度: {{ spot.heatScore || 0 }}</p>
               <p class="brief" :title="spot.brief">{{ spot.brief || '暂无简介' }}</p>
               <div class="card-footer">
-                <el-button type="primary" size="small" @click="goToDetail(spot.id)">查看详情</el-button>
+                <el-button type="primary" size="small" @click.stop="goToDetail(spot.id)">查看详情</el-button>
               </div>
             </div>
           </el-card>
@@ -183,6 +186,10 @@ onMounted(() => {
 
 // 跳转详情页
 const goToDetail = (id) => {
+  if (id === undefined || id === null || id === '') {
+    ElMessage.warning('景点 ID 不存在，无法查看详情')
+    return
+  }
   router.push(`/spots/${id}`)
 }
 
